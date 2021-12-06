@@ -191,7 +191,7 @@ class ExperimentBuilder(nn.Module):
             if name.endswith("weight"):
                 name_elems = [
                     elem
-                    for elem in name.split(".")
+                    for elem in name.split("_")
                     if elem not in ("layer", "dict", "weight")
                 ]
                 layers.append(" ".join(name_elems))
