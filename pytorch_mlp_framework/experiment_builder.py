@@ -25,6 +25,7 @@ class ExperimentBuilder(nn.Module):
         test_data,
         weight_decay_coefficient,
         use_gpu,
+        learning_rate,
         continue_from_epoch=-1,
     ):
         """
@@ -84,7 +85,10 @@ class ExperimentBuilder(nn.Module):
         print("Total number of linear layers", num_linear_layers)
 
         self.optimizer = optim.Adam(
-            self.parameters(), amsgrad=False, weight_decay=weight_decay_coefficient
+            self.parameters(),
+            amsgrad=False,
+            weight_decay=weight_decay_coefficient,
+            lr=learning_rate,
         )
         self.learning_rate_scheduler = optim.lr_scheduler.CosineAnnealingLR(
             self.optimizer, T_max=num_epochs, eta_min=0.00002

@@ -98,6 +98,7 @@ conv_experiment = ExperimentBuilder(
     train_data=train_data_loader,
     val_data=val_data_loader,
     test_data=test_data_loader,
+    learning_rate=args.learning_rate,
 )  # build an experiment object
 (
     experiment_metrics,
