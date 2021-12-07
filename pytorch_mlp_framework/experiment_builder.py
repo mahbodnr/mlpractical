@@ -191,10 +191,10 @@ class ExperimentBuilder(nn.Module):
             if name.endswith("weight"):
                 name_elems = [
                     elem
-                    for elem in name.split("_")
-                    if elem not in ("layer", "dict", "weight")
+                    for elem in name.split(".")
+                    if elem not in ("layer_dict", "weight")
                 ]
-                layers.append(" ".join(name_elems))
+                layers.append("_".join(name_elems))
                 all_grads.append(values.grad.abs().mean())
         ########################################
 
